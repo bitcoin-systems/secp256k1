@@ -1,5 +1,11 @@
 use std::time::{SystemTime, UNIX_EPOCH};
 
+const SEVEN: [u8; 32] = [
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x07
+];
 
 /// curve's field prime
 const P: [u8; 32] = [
@@ -86,10 +92,40 @@ fn get_random_values(buffer: &mut [u8]) {
     }
 }
 
+struct Curve {
+    p: [u8; 32],
+    n: [u8; 32],
+    a: [u8; 32],
+    b: [u8; 32],
+    gx: [u8; 32],
+    gy: [u8; 32]
+}
+
+impl Curve {
+    pub fn new() -> Self {
+        Curve {
+            p: P.clone(),
+            n: N.clone(),
+            a: B256.clone(),
+            b: SEVEN.clone(),
+            gx: GX.clone(),
+            gy: GY.clone()
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
-
+    
     #[test]
-    fn it_works() {}
+    fn create_curve_struct() {
+        let curve = Curve::new();
+        assert!(curve.p == P, "Curve p not valid");
+        assert!(curve.n == N, "Curve n not valid");
+        assert!(curve.a == B256, "Curve a not valid");
+        assert!(curve.b == SEVEN, "Curve b not valid");
+        assert!(curve.gx == GX, "Curve gx not valid");
+        assert!(curve.gy == GY, "Curve gy not valid");
+    }
 }
