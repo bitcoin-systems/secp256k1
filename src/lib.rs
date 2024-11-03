@@ -44,6 +44,9 @@ const GY: [u8; 32] = [
     0x9c, 0x47, 0xd0, 0x8f, 0xfb, 0x10, 0xd4, 0xb8
 ];
 
+const f_len = 32; // field / group byte length
+
+
 fn mod_vec(a: &Vec<u8>, b: &Vec<u8>) -> Vec<u8> {
     // Convert `a` and `b` from `Vec<u8>` to `u128`
     // but here we will assume they fit into u128 for demonstration purposes.
