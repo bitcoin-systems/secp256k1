@@ -1,6 +1,6 @@
 # secp256k1
 
-Rust implementation of secp256k1 curve. Bare matter implementation without using any crates.  
+Rust implementation of secp256k1 curve. Bare metal implementation without using any crates.  
 
 # Running the project
 
