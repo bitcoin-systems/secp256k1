@@ -11,3 +11,5 @@ cargo test
 # Approach to tackle bigints
 
 Using `Vec<u8>` vectors of hex for bigint replacement.
+
+# Inspired from noble-secp256k1 implementation
